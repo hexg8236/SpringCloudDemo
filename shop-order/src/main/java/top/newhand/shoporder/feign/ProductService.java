@@ -4,15 +4,20 @@ import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import top.newhand.shopcommon.entity.Product;
+import top.newhand.shoporder.fallback.ProductServiceFallBackFactory;
 
 /**
  * @author HeXianGang
  * @className ProductService
  * @description Feign调用
  * @since 2024/5/13 21:21
+ *
+ * fallback: 指定容错类 --集成Sentinel
  **/
 
-@FeignClient("shop-product")
+@FeignClient(value = "shop-product",
+        // fallback = ProductServiceFallBack.class,  二者只能选其一
+        fallbackFactory = ProductServiceFallBackFactory.class)
 public interface ProductService {
 
 

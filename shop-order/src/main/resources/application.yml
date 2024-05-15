@@ -30,3 +30,7 @@ spring:
 shop-product:
   ribbon:
     NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RandomRule
+#开启Feign对sentinel的支持
+feign:
+  sentinel:
+    enabled: true
