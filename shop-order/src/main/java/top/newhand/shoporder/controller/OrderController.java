@@ -53,7 +53,11 @@ public class OrderController {
 
         // 通过Feign调用商品微服务
         Product product = productService.findByPid(pid);
-
+        if (product.getPid() == -1L) {
+            Order order = new Order();
+            order.setUsername("下单失败");
+            return order;
+        }
         log.info(">>商品信息,查询结果:" + JSON.toJSONString(product));
         Order order = new Order();
         order.setUid(1L);
