@@ -11,3 +11,11 @@ spring:
       discovery:
         locator:
           enabled: true
+      routes:
+        - id: product-service
+          uri: lb://product-service
+          predicates:
+            - Path=/product/**
+            - Age=16,60
+          filters:
+            - StripPrefix=1
