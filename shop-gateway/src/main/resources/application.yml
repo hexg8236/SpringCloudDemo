@@ -16,6 +16,5 @@ spring:
           uri: lb://product-service
           predicates:
             - Path=/product/**
-            - Age=16,60
           filters:
             - StripPrefix=1
